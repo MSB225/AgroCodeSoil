@@ -1,15 +1,14 @@
 import { jsPDF } from 'https://cdn.skypack.dev/jspdf';
 
 
-export function gerarPdf() {
+export function gerarPdf(id) {
 
     const dados = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || [];
-    const button = document.querySelector(".abrir_pdf")
-
+    console.log(id)
 
     dados.forEach(amostra => {
 
-        if (amostra.id == button.dataset.id) {
+        if (amostra.id == id) {
 
             const doc = new jsPDF();
 

@@ -1,5 +1,5 @@
 import { id, nomeAmostra, interpretarSaturacaoPorBases, interpretarCTCpH7, array_amostra, array_valores } from "./logics/logic_page1.js";
-import { adicionarElementos, salvarDadosAmostra, salvarValoresAmostra, limparElementos, adicionarTabela, salvarTabelaLinha, removerTabelaLinha, carregarTabela, atualizarTabela, mostrarAmostraSidebar, removerLinhaSidebar, carregarAmostraSidebar, verificarValoresCampos } from "./components/components_page1.js";
+import { adicionarElementos, salvarDadosAmostra, salvarValoresAmostra, limparElementos, adicionarTabela, salvarTabelaLinha, removerTabelaLinha, carregarTabela, atualizarTabela, mostrarAmostraSidebar, removerAmostraSidebar, carregarAmostraSidebar, verificarValoresCampos } from "./components/components_page1.js";
 
 //-----------------------------------------Events---------------------------------------//
 
@@ -70,7 +70,7 @@ document.addEventListener("click", (e) => {
 
     if (e.target.id === "button_delete") {
 
-        removerLinhaSidebar()
+        removerAmostraSidebar()
 
     }
 
@@ -89,7 +89,6 @@ document.addEventListener("click", (e) => {
         icone.src = todosMarcados ? "/src/assets/icons/check_box_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" : "/src/assets/icons/check_box_outline_blank_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
 
         botao.classList.toggle("botao-vermelho", !todosMarcados)
-
 
     }
 

@@ -227,9 +227,15 @@ body {
 
 }
 
-.botao-vermelho {
+#button_select.botao-vermelho {
 
     background-color: #df5353;
+
+}
+
+#button_select.botao-verde {
+
+    background-color: #198754;
 
 }
 

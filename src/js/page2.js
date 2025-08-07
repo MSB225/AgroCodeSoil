@@ -1,5 +1,5 @@
 import { id, camposAmostra, calagemResultado, array_resultados } from "./logics/logic_page2.js"
-import { adicionarElementos, listarAmostras, salvarDadosAmostra, limparElementos, adicionarTabela, salvarTabelaLinha, carregarTabela, atualizarTabela, mostrarAmostraSidebar, removerTabelaLinha, removerLinhaSidebar, carregarAmostraSidebar, verificarValoresCampos } from "./components/components_page2.js";
+import { adicionarElementos, listarAmostras, salvarDadosAmostra, limparElementos, adicionarTabela, salvarTabelaLinha, carregarTabela, atualizarTabela, mostrarAmostraSidebar, removerTabelaLinha, removerAmostraSidebar, carregarAmostraSidebar,atualizarAmostraSidebar, verificarValoresCampos } from "./components/components_page2.js";
 
 // save and cancel process 
 
@@ -71,7 +71,7 @@ document.addEventListener("click", (e) => {
 
     if (e.target.id === "button_delete") {
 
-        removerLinhaSidebar()
+        removerAmostraSidebar()
 
     }
 

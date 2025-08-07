@@ -397,7 +397,22 @@ export function mostrarAmostraSidebar(botao) {
 
 }
 
-export function removerLinhaSidebar() {
+export function atualizarAmostraSidebar() {
+
+    const li_amostras = document.querySelectorAll(".li_amostras")
+    const icone = document.querySelector(".icone")
+    const botao = document.querySelector("#button_select");
+
+    if (li_amostras.length === 0) {
+
+        icone.src = "/src/assets/icons/check_box_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+        botao.classList.toggle("botao-verde", icone)
+        location.reload()
+    }
+
+}
+
+export function removerAmostraSidebar() {
 
     // remove line sidebar
 
@@ -410,7 +425,12 @@ export function removerLinhaSidebar() {
         const id = input.dataset.id
 
         const item = input.closest(".li_amostras");
-        if (item) item.remove();
+        if (item) {
+
+            item.remove();
+            atualizarAmostraSidebar()
+
+        }
 
         amostraSalvas = amostraSalvas.filter(item => item.id != id)
 

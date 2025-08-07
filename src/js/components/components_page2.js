@@ -60,7 +60,7 @@ export function adicionarElementos() {
             input_v2.name = "V2"
             input_v2.id = "V2"
             input_v2.placeholder = "%"
-            input_v2.maxLength="2"
+            input_v2.maxLength = "2"
 
             label_prnt.textContent = "PRNT"
             label_prnt.for = "PRNT"
@@ -69,7 +69,7 @@ export function adicionarElementos() {
             input_prnt.name = "PRNT"
             input_prnt.id = "PRNT"
             input_prnt.placeholder = "%"
-            input_prnt.maxLength="3"
+            input_prnt.maxLength = "3"
 
 
             div.appendChild(label_v2)
@@ -415,7 +415,22 @@ export function carregarAmostraSidebar() {
 
 }
 
-export function removerLinhaSidebar() {
+export function atualizarAmostraSidebar() {
+
+    const li_amostras = document.querySelectorAll(".li_amostras")
+    const icone = document.querySelector(".icone")
+    const botao = document.querySelector("#button_select");
+
+    if (li_amostras.length === 0) {
+
+        icone.src = "/src/assets/icons/check_box_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+        botao.classList.toggle("botao-verde", icone)
+        location.reload()
+    }
+
+}
+
+export function removerAmostraSidebar() {
 
     let amostraSalvas = JSON.parse(localStorage.getItem("AmostraSalvasPage2")) || [];
 
@@ -426,7 +441,12 @@ export function removerLinhaSidebar() {
         const id = input.dataset.id
 
         const item = input.closest(".li_amostras");
-        if (item) item.remove();
+        if (item) {
+
+            item.remove();
+            atualizarAmostraSidebar()
+
+        }
 
         amostraSalvas = amostraSalvas.filter(item => item.id != id)
 

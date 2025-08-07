@@ -354,7 +354,7 @@ export function adicionarTabela(amostra) {
             <button class="btn btn-success" id="button_excluirlista" data-id="${amostra.id}">
                 <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
             </button> 
-            <input class="caixa_input" id="caixa_select" data-id="${amostra.id}" type="checkbox">
+            <input class="caixa_input_tabela" id="caixa_select" data-id="${amostra.id}" type="checkbox">
         </td>
         
     `;
@@ -443,7 +443,7 @@ export function mostrarAmostraSidebar(amostra) {
             <div class="item-linha">
                 <span class="texto-linha"Rel.${amostra.Nome}</span>
                 <button class="abrir_pdf" data-id=${amostra.id} ><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
-                <input class="caixa_input" data-id=${amostra.id} type="checkbox">
+                <input class="caixa_input_amostra" data-id=${amostra.id} type="checkbox">
             </div>
 
         `;
@@ -478,7 +478,7 @@ export function carregarAmostraSidebar() {
             <div class="item-linha">
                 <span class="texto-linha">Rel.${element.Nome}</span>
                 <button class="abrir_pdf" data-id="${element.id}"><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
-                <input class="caixa_input" data-id="${element.id}" type="checkbox">
+                <input class="caixa_input_amostra" data-id="${element.id}" type="checkbox">
                 
             </div>
         `;
@@ -490,11 +490,26 @@ export function carregarAmostraSidebar() {
 
 }
 
+export function atualizarAmostraSidebar() {
+
+    const li_amostras = document.querySelectorAll(".li_amostras")
+    const icone = document.querySelector(".icone")
+    const botao = document.querySelector("#button_select");
+
+    if (li_amostras.length === 0) {
+
+        icone.src = "/src/assets/icons/check_box_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+        botao.classList.toggle("botao-verde", icone)
+        location.reload()
+    }
+
+}
+
 export function removerAmostraSidebar() {
 
     let amostraResultados = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || [];
 
-    const inputsSelecionados = document.querySelectorAll(".caixa_input:checked");
+    const inputsSelecionados = document.querySelectorAll(".caixa_input_amostra:checked");
 
     inputsSelecionados.forEach(input => {
 
@@ -504,10 +519,12 @@ export function removerAmostraSidebar() {
         if (item) {
 
             item.remove();
+            atualizarAmostraSidebar()
 
         }
 
         amostraResultados = amostraResultados.filter(item => item.id != id)
+
 
     })
 
@@ -528,23 +545,11 @@ export function verificarValoresCampos() {
             e.target.value = e.target.value.replace(/[^0-9.]/g, "")
         }
 
-        const ids = [
+        const ids = ["input_nome", "input_municipio", "input_localidade", "input_endereco"];
 
-            "input_nome",
-            "input_municipio",
-            "input_localidade",
-            "input_endereco"
-        ]
-
-        ids.forEach(item => {
-
-            if (e.target.id === item) {
-
-                e.target.value = e.target.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]/g, "")
-
-            }
-
-        })
+        if (ids.includes(e.target.id)) {
+            e.target.value = e.target.value.replace(/[^a-zA-ÿ\s]/g, "");
+        }
 
     });
 

@@ -1,5 +1,5 @@
 import { idCadastro, amostraCadastro, usuarioCadastro, camadaCadastro, array_amostra } from "./logics/logic_page3.js"
-import { adicionarElementos, adicionarFormulario, listarAmostras, salvarDadosAmostra, salvarDadosFormulario, limparElementos, adicionarTabela, carregarTabela, atualizarTabela, removerTabelaLinha, mostrarAmostraSidebar, carregarAmostraSidebar, removerAmostraSidebar, verificarValoresCampos } from "./components/components_page3.js"
+import { adicionarElementos, adicionarFormulario, listarAmostras, salvarDadosAmostra, salvarDadosFormulario, limparElementos, adicionarTabela, carregarTabela, atualizarTabela, removerTabelaLinha, mostrarAmostraSidebar, carregarAmostraSidebar, removerAmostraSidebar, atualizarAmostraSidebar, verificarValoresCampos } from "./components/components_page3.js"
 import { gerarPdf } from "./pdf.js";
 
 // salvar fields
@@ -79,7 +79,8 @@ document.addEventListener("click", (e) => {
 
     if (e.target && e.target.className === "abrir_pdf") {
 
-        gerarPdf()
+        const id = e.target.dataset.id
+        gerarPdf(id)
 
     }
 
@@ -98,7 +99,6 @@ document.addEventListener("change", (event) => {
     }
 
 })
-
 
 // sidebar
 
@@ -124,7 +124,7 @@ document.addEventListener("click", (e) => {
     if (e.target.id === "button_select") {
 
         const botao = document.querySelector("#button_select");
-        const inputs = document.querySelectorAll(".caixa_input");
+        const inputs = document.querySelectorAll(".caixa_input_amostra");
 
         const todosMarcados = Array.from(inputs).every(input => input.checked);
 
@@ -137,10 +137,7 @@ document.addEventListener("click", (e) => {
 
         botao.classList.toggle("botao-vermelho", !todosMarcados)
 
-        // se campo estiver vazio então retorna 
-
     }
-
 
 })
 
