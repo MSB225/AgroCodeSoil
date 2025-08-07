@@ -1,0 +1,551 @@
+
+//-----------------------------------------Campos---------------------------------------//
+
+export function adicionarElementos() {
+
+    const conteudo_campos_elementos = document.querySelector(".conteudo.campos.elementos")
+
+    if (conteudo_campos_elementos) {
+
+        // add div conteudo_campos_formulario area/gleba
+
+        if (!document.getElementById("input_area")) {
+            const div_area = document.createElement("div")
+            div_area.classList.add("campo")
+
+            const input_area = document.createElement("input")
+            const label_area = document.createElement("label")
+
+            input_area.id = "input_area"
+            label_area.id = "label_area"
+
+            input_area.placeholder = "Ex.t/ha"
+            label_area.textContent = "Área Total / Gleba"
+
+            input_area.required = true
+            input_area.type = "text"
+            input_area.setAttribute("maxlength", "5")
+
+            div_area.appendChild(label_area)
+            div_area.appendChild(input_area)
+            conteudo_campos_elementos.appendChild(div_area)
+        }
+
+        if (!document.getElementById("select_camada")) {
+            const div_camada = document.createElement("div")
+            div_camada.classList.add("campo")
+
+            const camadas = ["0-20", "20-40"]
+
+            const label_camada = document.createElement("label")
+            label_camada.textContent = "Camada da Amostra"
+
+            const select_camada = document.createElement("select")
+            select_camada.id = "select_camada"
+
+            const option_padrao = document.createElement("option")
+            option_padrao.textContent = "Selecione uma camada"
+            option_padrao.disabled = true
+            option_padrao.selected = true
+            select_camada.appendChild(option_padrao)
+
+
+            for (let i = 0; i < camadas.length; i++) {
+                const option = document.createElement("option")
+                option.textContent = camadas[i] + " cm"
+                option.value = camadas[i]
+                option.id = "option_camada"
+                select_camada.appendChild(option)
+            }
+
+            div_camada.appendChild(label_camada)
+            div_camada.appendChild(select_camada)
+
+            conteudo_campos_elementos.appendChild(div_camada)
+        }
+
+        if (!document.getElementById("button_cancelar") && !document.getElementById("button_salvar")) {
+            const div_button = document.createElement("div")
+            div_button.classList.add("campo_button")
+
+            // Create element button and img
+
+            const button_salvar = document.createElement("button")
+            const button_cancelar = document.createElement("button")
+            const img_salvar = document.createElement("img")
+            const img_cancelar = document.createElement("img")
+
+
+            // Create element button_salvar
+
+            button_salvar.id = "button_salvar"
+            img_salvar.src = "./src/assets/icons/check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+
+            button_salvar.appendChild(img_salvar)
+
+            button_cancelar.id = "button_cancelar"
+            img_cancelar.src = "./src/assets/icons/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
+
+            button_cancelar.appendChild(img_cancelar)
+
+            div_button.appendChild(button_cancelar)
+            div_button.appendChild(button_salvar)
+
+            conteudo_campos_elementos.appendChild(div_button)
+
+        }
+
+    }
+
+}
+
+export function adicionarFormulario() {
+
+    const formulario = document.getElementById("formulario")
+
+    if (formulario) {
+
+        if (!document.getElementById("input_nome")) {
+
+            const nomeDiv = document.createElement("div");
+            nomeDiv.className = "form-field";
+            nomeDiv.innerHTML = `
+                <label for="nome">Nome/Propriedade:</label>
+                <input type="text" id="input_nome" name="nome" placeholder="Ex.Rancho Profundo" maxlength="25" required>
+            `;
+
+            formulario.appendChild(nomeDiv);
+
+        }
+        if (!document.getElementById("input_municipio")) {
+
+
+            const municipioDiv = document.createElement("div");
+            municipioDiv.className = "form-field";
+            municipioDiv.innerHTML = `
+                <label for="municipio">Município:</label>
+                <input type="text" id="input_municipio" name="municipio" placeholder="Ex.Cidade" maxlength="25"  required>
+            `;
+
+            formulario.appendChild(municipioDiv);
+
+        }
+
+        if (!document.getElementById("input_localidade")) {
+
+            const localidadeDiv = document.createElement("div");
+            localidadeDiv.className = "form-field";
+            localidadeDiv.innerHTML = `
+                <label for="localidade">Localidade:</label>
+                <input type="text" id="input_localidade" name="localidade" placeholder="Ex.Região" maxlength="25"  required>
+            `;
+
+            formulario.appendChild(localidadeDiv);
+        }
+        if (!document.getElementById("input_endereco")) {
+
+            const enderecoDiv = document.createElement("div");
+            enderecoDiv.className = "form-field";
+            enderecoDiv.innerHTML = `
+                <label for="endereco">Endereço:</label>
+                <input type="text" id="input_endereco" name="endereco" placeholder="Ex.Rua" maxlength="25"  required>
+            `;
+
+            formulario.appendChild(enderecoDiv);
+        }
+
+        if (!document.getElementById("input_cep")) {
+
+            const cepDiv = document.createElement("div");
+            cepDiv.className = "form-field";
+            cepDiv.innerHTML = `
+                <label for="cep">CEP:</label>
+                <input type="text" id="input_cep" name="cep" placeholder="Ex.00000-000" maxlength="8" required>
+            `;
+
+            formulario.appendChild(cepDiv);
+
+        }
+
+        if (!document.getElementById("button_enviar")) {
+
+            const submitBtn = document.createElement("div");
+            submitBtn.className = "form-field-button";
+            submitBtn.innerHTML = `
+                <button id="button_enviar" type="submit">Cadastrar</button>
+            `;
+
+            formulario.appendChild(submitBtn);
+        }
+
+    }
+
+}
+
+//-----------------------------------------SalvarAmostras/ExcluirCampos---------------------------------------//
+
+export function listarAmostras() {
+
+    const lista = JSON.parse(localStorage.getItem("AmostraSalvasPage2")) || [];
+    const select = document.getElementById("selecionar_amostra")
+
+    lista.forEach(element => {
+
+        const option = document.createElement("option")
+
+        option.value = element.id
+        option.textContent = `${element.Processo}: ${element.Amostra}`
+
+        select.appendChild(option)
+
+    })
+
+}
+
+export function salvarDadosAmostra(amostra) {
+
+    // load data on localstorage
+    const dadosAmostra = JSON.parse(localStorage.getItem("AmostraTabelaPage3")) || [];
+
+    // add in list
+    dadosAmostra.push(amostra);
+
+    // save in localstorage
+    localStorage.setItem("AmostraTabelaPage3", JSON.stringify(dadosAmostra));
+
+}
+
+export function salvarDadosFormulario(amostra) {
+
+    // load data on localstorage
+    const resultadosRelatorio = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || [];
+
+    const caixa_select = document.querySelectorAll("#caixa_select")
+
+    const todosMarcados = Array.from(caixa_select).filter(item => item.checked)
+
+    let arrayAreas = []
+
+
+    if (todosMarcados) {
+
+
+        todosMarcados.forEach(item => {
+
+
+            const area = item.parentElement.parentElement.children[0].textContent // Area
+            const calagemtotal = item.parentElement.parentElement.children[1].textContent // calagem total
+            const camada = item.parentElement.parentElement.children[2].textContent // profundidade
+
+            const Areas = {
+
+                "Area": area,
+                "CalagemTotal": calagemtotal,
+                "Camada": camada
+
+            }
+
+            arrayAreas.push(Areas)
+
+        })
+
+        const resultados = {
+
+            "id": Math.random(),
+            "Nome": amostra.Nome,
+            "Município": amostra.Município,
+            "Localidade": amostra.Localidade,
+            "Endereço": amostra.Endereço,
+            "Cep": amostra.Cep,
+            "Areas": arrayAreas
+
+        }
+
+        resultadosRelatorio.push(resultados)
+
+        localStorage.setItem("AmostraSalvasPage3", JSON.stringify(resultadosRelatorio))
+
+    }
+
+}
+
+export function limparElementos() {
+
+    const button_cancelar_amostra = document.getElementById("button_cancelar")
+
+    if (button_cancelar_amostra) {
+
+        const ids = [
+
+            "input_area",
+            "button_cancelar",
+            "select_camada"
+
+
+        ]
+
+        ids.forEach(element => {
+
+            const limparcampos = document.getElementById(element)
+            limparcampos.remove()
+
+        });
+
+        // clear label
+        const campos_label = document.querySelector(".conteudo.campos.elementos")
+        campos_label.textContent = ""
+
+        // clear select options
+        const resetaramostra = document.getElementById("selecionar_amostra")
+        resetaramostra.value = "0"
+
+    }
+
+}
+
+//-----------------------------------------Tabela---------------------------------------//
+
+export function adicionarTabela(amostra) {
+
+    let table = document.querySelector("table");
+    const campo2 = document.querySelector(".conteudo.tabela")
+
+    if (!table) {
+        table = document.createElement("table");
+        table.id = "tabela";
+        campo2.appendChild(table);
+    }
+
+    let thead = table.querySelector("thead");
+
+    if (!thead) {
+        thead = document.createElement("thead");
+        thead.id = "cabecalho";
+
+        const tr_thead = document.createElement("tr");
+        tr_thead.innerHTML = `
+
+            <th>Área</th>
+            <th>Calagem Total</th>
+            <th>Profundidade</th>
+            <th>Ações</th>
+            
+        `;
+
+        thead.appendChild(tr_thead);
+        table.appendChild(thead);
+    }
+
+    let tbody = table.querySelector("tbody");
+
+    if (!tbody) {
+
+        tbody = document.createElement("tbody");
+        table.appendChild(tbody);
+    }
+
+    const tr = document.createElement("tr")
+    tr.innerHTML = `
+
+        <td>${amostra.Area}</td>
+        <td>${amostra.CalagemTotal}</td>
+        <td>${amostra.Camada}</td>
+        <td>
+            <button class="btn btn-success" id="button_excluirlista" data-id="${amostra.id}">
+                <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+            </button> 
+            <input class="caixa_input" id="caixa_select" data-id="${amostra.id}" type="checkbox">
+        </td>
+        
+    `;
+
+
+    const btnExcluir = tr.querySelector("#button_excluirlista");
+
+    btnExcluir.addEventListener("click", function () {
+
+        removerTabelaLinha(this)
+        atualizarTabela()
+
+    })
+
+    tbody.appendChild(tr);
+    table.appendChild(tbody)
+    campo2.appendChild(table)
+
+
+}
+
+export function carregarTabela() {
+
+    const lista = JSON.parse(localStorage.getItem("AmostraTabelaPage3")) || [];
+    lista.forEach(adicionarTabela)
+
+}
+
+export function atualizarTabela() {
+
+    const table = document.querySelector("table")
+    const tbody = table.querySelector("tbody")
+
+    if (tbody.rows.length === 0) {
+
+        table.classList.add("sem-linha");
+        location.reload()
+
+    }
+    else {
+
+        table.classList.remove("sem-linha")
+
+    }
+
+}
+
+export function removerTabelaLinha(botao) {
+
+    const linha = botao.parentElement.parentElement
+
+    linha.remove()
+
+    const id = botao.dataset.id
+
+    let amostraResultados = JSON.parse(localStorage.getItem("AmostraTabelaPage3")) || [];
+
+    amostraResultados = amostraResultados.filter(item => !(item.id == id))
+
+    localStorage.setItem("AmostraTabelaPage3", JSON.stringify(amostraResultados))
+
+}
+
+//-----------------------------------------Sidebar---------------------------------------//
+
+export function mostrarAmostraSidebar(amostra) {
+
+    const sidebar = document.querySelector("#div_amostras")
+
+    let ul = document.querySelector("#ul_amostras")
+
+    if (!ul) {
+
+        const ul = document.createElement("ul")
+        ul.id = "ul_amostras"
+        sidebar.appendChild(ul)
+
+    }
+
+    const li = document.createElement("li")
+    li.classList.add("list-group-item", "li_amostras")
+
+
+    li.innerHTML = `
+        
+            <div class="item-linha">
+                <span class="texto-linha"Rel.${amostra.Nome}</span>
+                <button class="abrir_pdf" data-id=${amostra.id} ><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
+                <input class="caixa_input" data-id=${amostra.id} type="checkbox">
+            </div>
+
+        `;
+
+    ul.appendChild(li)
+
+
+}
+
+export function carregarAmostraSidebar() {
+
+    const lista = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || [];
+
+    lista.forEach(element => {
+
+        const sidebar = document.querySelector("#div_amostras")
+
+        const ul = document.querySelector("#ul_amostras")
+
+        if (!ul) {
+
+            const ul = document.createElement("ul")
+            ul.id = "ul_amostras"
+
+        }
+
+        const li = document.createElement("li")
+        li.classList.add("list-group-item", "li_amostras")
+
+        li.innerHTML = `
+
+            <div class="item-linha">
+                <span class="texto-linha">Rel.${element.Nome}</span>
+                <button class="abrir_pdf" data-id="${element.id}"><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
+                <input class="caixa_input" data-id="${element.id}" type="checkbox">
+                
+            </div>
+        `;
+
+        ul.appendChild(li)
+        sidebar.appendChild(ul)
+
+    });
+
+}
+
+export function removerAmostraSidebar() {
+
+    let amostraResultados = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || [];
+
+    const inputsSelecionados = document.querySelectorAll(".caixa_input:checked");
+
+    inputsSelecionados.forEach(input => {
+
+        const id = input.dataset.id
+
+        const item = input.closest(".li_amostras");
+        if (item) {
+
+            item.remove();
+
+        }
+
+        amostraResultados = amostraResultados.filter(item => item.id != id)
+
+    })
+
+    localStorage.setItem("AmostraSalvasPage3", JSON.stringify(amostraResultados))
+}
+
+export function verificarValoresCampos() {
+
+    document.addEventListener("input", (e) => {
+
+        if (e.target.id === "input_area") {
+
+            e.target.value = e.target.value.replace(/[^0-9.]/g, "")
+        }
+
+        if (e.target.id === "input_cep") {
+
+            e.target.value = e.target.value.replace(/[^0-9.]/g, "")
+        }
+
+        const ids = [
+
+            "input_nome",
+            "input_municipio",
+            "input_localidade",
+            "input_endereco"
+        ]
+
+        ids.forEach(item => {
+
+            if (e.target.id === item) {
+
+                e.target.value = e.target.value.replace(/[^a-zA-ZáàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ\s]/g, "")
+
+            }
+
+        })
+
+    });
+
+}
