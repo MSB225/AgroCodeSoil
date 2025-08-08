@@ -176,7 +176,7 @@ export function adicionarTabela(amostra) {
     if (!table) {
         table = document.createElement("table");
         table.id = "tabela";
-        campo2.appendChild(table);
+
     }
 
     let thead = table.querySelector("thead");
@@ -214,10 +214,10 @@ export function adicionarTabela(amostra) {
         <td>${amostra.Saturação_Base}</td>
         <td>${amostra.CTC_pH7}</td>
         <td>
-            <button class="btn btn-success" id="button_excluirlista" data-id="${amostra.id}">
+            <button id="button_excluirlinha" data-id="${amostra.id}">
                 <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
             </button> 
-            <button class="btn btn-success" id="button_salvarlista" data-id="${amostra.id}" >
+            <button id="button_salvarlinha" data-id="${amostra.id}" >
                 <img src="./src/assets/icons/save_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
             </button>
         </td>
@@ -225,8 +225,8 @@ export function adicionarTabela(amostra) {
     `;
 
     // add listener 
-    const btnSalvar = tr.querySelector("#button_salvarlista");
-    const btnExcluir = tr.querySelector("#button_excluirlista");
+    const btnSalvar = tr.querySelector("#button_salvarlinha");
+    const btnExcluir = tr.querySelector("#button_excluirlinha");
 
 
     btnSalvar.addEventListener("click", function (e) {
@@ -279,9 +279,6 @@ export function atualizarTabela() {
 }
 
 export function salvarTabelaLinha(id) {
-
-    // add line table
-
 
     // load localstorage
     const amostraTabela = JSON.parse(localStorage.getItem("AmostraTabelaPage1")) || [];
