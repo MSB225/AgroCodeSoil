@@ -64,7 +64,7 @@ export function adicionarElementos() {
             conteudo_campos_elementos.appendChild(div_camada)
         }
 
-        if (!document.getElementById("button_cancelar") && !document.getElementById("button_salvar")) {
+        if (!document.getElementById("button_cancelaramostra") && !document.getElementById("button_salvaramostra")) {
             const div_button = document.createElement("div")
             div_button.classList.add("campo_button")
 
@@ -78,12 +78,12 @@ export function adicionarElementos() {
 
             // Create element button_salvar
 
-            button_salvar.id = "button_salvar"
+            button_salvar.id = "button_salvaramostra"
             img_salvar.src = "./src/assets/icons/check_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
 
             button_salvar.appendChild(img_salvar)
 
-            button_cancelar.id = "button_cancelar"
+            button_cancelar.id = "button_cancelaramostra"
             img_cancelar.src = "./src/assets/icons/close_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"
 
             button_cancelar.appendChild(img_cancelar)
@@ -271,14 +271,15 @@ export function salvarDadosFormulario(amostra) {
 
 export function limparElementos() {
 
-    const button_cancelar_amostra = document.getElementById("button_cancelar")
+    const button_cancelar_amostra = document.getElementById("button_cancelaramostra")
 
     if (button_cancelar_amostra) {
 
         const ids = [
 
             "input_area",
-            "button_cancelar",
+            "button_cancelaramostra",
+            "button_salvaramostra",
             "select_camada"
 
 
@@ -351,16 +352,22 @@ export function adicionarTabela(amostra) {
         <td>${amostra.CalagemTotal}</td>
         <td>${amostra.Camada}</td>
         <td>
-            <button class="btn btn-success" id="button_excluirlista" data-id="${amostra.id}">
-                <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
-            </button> 
-            <input class="caixa_input_tabela" id="caixa_select" data-id="${amostra.id}" type="checkbox">
+            <div id=div_acoes_tabela>
+                <div>
+                    <button id="button_excluirlinha" data-id="${amostra.id}">
+                        <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+                    </button> 
+                </div>
+                <div>
+                    <input id="caixa_select" data-id="${amostra.id}" type="checkbox">
+                </div>
+            </div>
         </td>
         
     `;
 
 
-    const btnExcluir = tr.querySelector("#button_excluirlista");
+    const btnExcluir = tr.querySelector("#button_excluirlinha");
 
     btnExcluir.addEventListener("click", function () {
 

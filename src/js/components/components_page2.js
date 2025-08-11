@@ -211,18 +211,18 @@ export function adicionarTabela(amostra) {
                 <td>${amostra.Amostra}</td>
                 <td>${amostra.Necessidade}</td>
                 <td>
-                    <button class="btn btn-success" id="button_excluirlista" data-id="${amostra.id}" >
+                    <button id="button_excluirlinha" data-id="${amostra.id}" >
                         <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
                     </button> 
-                    <button class="btn btn-success" id="button_salvarlista" data-id="${amostra.id}" >
+                    <button id="button_salvarlinha" data-id="${amostra.id}" >
                         <img src="./src/assets/icons/save_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
                     </button>
                 </td>
         
             `;
 
-    const btnSalvar = tr.querySelector("#button_salvarlista");
-    const btnExcluir = tr.querySelector("#button_excluirlista");
+    const btnSalvar = tr.querySelector("#button_salvarlinha");
+    const btnExcluir = tr.querySelector("#button_excluirlinha");
 
 
     btnSalvar.addEventListener("click", function (e) {

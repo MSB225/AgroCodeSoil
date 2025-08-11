@@ -14,13 +14,13 @@ document.addEventListener("click", (event) => {
 
     }
 
-    if (event.target.id === "button_cancelar") {
+    if (event.target.id === "button_cancelaramostra") {
 
         limparElementos()
 
     }
 
-    if (event.target.id === "button_salvar") {
+    if (event.target.id === "button_salvaramostra") {
 
         idCadastro()
         amostraCadastro()
