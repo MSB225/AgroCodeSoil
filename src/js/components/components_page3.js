@@ -233,9 +233,9 @@ export function salvarDadosFormulario(amostra) {
         todosMarcados.forEach(item => {
 
 
-            const area = item.parentElement.parentElement.children[0].textContent // Area
-            const calagemtotal = item.parentElement.parentElement.children[1].textContent // calagem total
-            const camada = item.parentElement.parentElement.children[2].textContent // profundidade
+            const area = item.parentElement.parentElement.parentElement.parentElement.children[0].textContent // Area
+            const calagemtotal = item.parentElement.parentElement.parentElement.parentElement.children[1].textContent // calagem total
+            const camada = item.parentElement.parentElement.parentElement.parentElement.children[2].textContent // profundidade
 
             const Areas = {
 
@@ -448,7 +448,7 @@ export function mostrarAmostraSidebar(amostra) {
     li.innerHTML = `
         
             <div class="item-linha">
-                <span class="texto-linha"Rel.${amostra.Nome}</span>
+                <span class="texto-linha" Rel.${amostra.Nome}</span>
                 <button class="abrir_pdf" data-id=${amostra.id} ><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
                 <input class="caixa_input_amostra" data-id=${amostra.id} type="checkbox">
             </div>

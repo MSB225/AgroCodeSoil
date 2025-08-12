@@ -14,17 +14,31 @@
 
         <div class="item-1">
 
-            <H1>AgroCodeSoil</H1>
+            <H1>AgroCodeSoil <span> <img src="./src/assets/icons/leaves.svg" alt="folha"></span></H1>
 
-            <a href="page1.html">Entrar</a>
 
         </div>
         <div class="item-2">
 
+            <form action="/login" method="POST" class="login-form">
+
+                <h2>Login</h2>
+
+                <label for="usuario">Usuário</label>
+                <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required>
+
+                <label for="senha">Senha</label>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+
+                <button id="entrar" type="submit">Entrar</button>
+
+            </form>
 
         </div>
 
     </div>
+
+    <script type="module" src="./src/js/login.js"></script>
 
 </body>
 
