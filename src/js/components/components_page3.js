@@ -102,26 +102,49 @@ export function adicionarElementosArea2() {
 
     const conteudo_registro = document.querySelector(".conteudo.registro")
 
+
     if (!document.getElementById("textArea")) {
 
         const textArea = document.createElement("textarea")
         textArea.id = "textArea"
+        textArea.textContent = "OBS:"
 
         conteudo_registro.appendChild(textArea)
+
+
     }
 
-    if (!document.getElementById("selecionar_cadastrado")){
+    if (!document.getElementById("selecionar_cadastrado")) {
 
+
+        const lista = JSON.parse(localStorage.getItem("CadastradosPage5")) || [];
 
         const select = document.createElement("select")
+        select.id = "selecionar_cadastrado"
+
         const option = document.createElement("option")
+        option.textContent = "Selecione um Cadastro"
+        option.disabled = true
+        option.selected = true
 
-        
+        select.appendChild(option)
 
-
+        conteudo_registro.appendChild(select)
 
 
     }
+
+    if (!document.getElementById("button_salvar_relatorio")) {
+
+        const butto_salvar = document.createElement("button")
+        butto_salvar.textContent = "Gerar Relatorio"
+        butto_salvar.id = "button_salvar_relatorio"
+
+        conteudo_registro.appendChild(butto_salvar)
+
+
+    }
+
 
 
 }
