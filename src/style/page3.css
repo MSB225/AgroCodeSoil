@@ -282,6 +282,7 @@ body {
 
 .conteudo {
 
+    overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
 
@@ -506,7 +507,7 @@ body {
     border-collapse: collapse;
     width: 90%;
     height: auto;
-    margin: 5vw;
+    margin: 3vw;
     table-layout: fixed;
 }
 

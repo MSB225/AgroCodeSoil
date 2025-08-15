@@ -279,6 +279,7 @@ body {
 
 .conteudo {
 
+    overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
 }
@@ -570,6 +571,60 @@ body {
 .sem-linha thead {
 
     display: none;
+
+}
+
+/*--------------------------Login-------------------------*/
+
+.dropdown {
+
+    position: relative;
+    margin-right: 0.5vw;
+}
+
+.dropdown img {
+
+    cursor: pointer;
+    margin: 1.2vw;
+
+}
+
+.dropdown_icon img {
+
+    pointer-events: none;
+
+}
+
+.dropdown_content {
+
+    position: absolute;
+    background-color: #913f33;
+    border-radius: 0.5vw;
+    width: 5vw;
+
+}
+
+.dropdown_content a {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: whitesmoke;
+    text-decoration: none;
+    margin-top: 1.2vw;
+    margin-bottom: 1.2vw;
+    height: 3vh;
+    padding: 0.8vw 0.8vh;
+    font-size: 0.8vw;
+    font-weight: 800;
+
+}
+
+.dropdown_content a:hover {
+
+    background-color: whitesmoke;
+    color: #913f33;
 
 }
 

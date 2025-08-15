@@ -94,14 +94,47 @@ document.addEventListener("click", (e) => {
 
 })
 
+// diplay none e block login user
+
+document.addEventListener("click", (e) => {
+
+    const dropdown = document.querySelector(".dropdown_content")
+
+    if (e.target && e.target.className === "dropdown_icon") {
+
+        if (dropdown.style.display === "none") {
+
+            dropdown.style.display = "block"
 
 
+        }
+        else {
+
+            dropdown.style.display = "none"
 
 
+        }
+
+    }
+
+})
 
 
+// click in div 
+
+document.addEventListener("click", (e) => {
 
 
+    const dropdown_content = document.querySelector(".dropdown_content")
+    const dropdown_icon = document.querySelector(".dropdown_icon")
+
+    if (!dropdown_content.contains(e.target) && !dropdown_icon.contains(e.target)) {
+
+        dropdown_content.style.display = "none"
+
+    }
+
+})
 
 
 

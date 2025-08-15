@@ -1,5 +1,5 @@
 import { idCadastro, amostraCadastro, usuarioCadastro, camadaCadastro, array_amostra } from "./logics/logic_page3.js"
-import { adicionarElementos, adicionarFormulario, listarAmostras, salvarDadosAmostra, salvarDadosFormulario, limparElementos, adicionarTabela, carregarTabela, atualizarTabela, removerTabelaLinha, mostrarAmostraSidebar, carregarAmostraSidebar, removerAmostraSidebar, atualizarAmostraSidebar, verificarValoresCampos } from "./components/components_page3.js"
+import { adicionarElementosArea2,adicionarElementos, listarAmostras, salvarDadosAmostra, limparElementos, adicionarTabela, carregarTabela, atualizarTabela, removerTabelaLinha, mostrarAmostraSidebar, carregarAmostraSidebar, removerAmostraSidebar, atualizarAmostraSidebar, verificarValoresCampos } from "./components/components_page3.js"
 import { gerarPdf } from "./pdf.js";
 
 // salvar fields
@@ -56,18 +56,18 @@ document.addEventListener("change", (e) => {
     // Verifica se o alvo da mudança foi uma checkbox com id="caixa_select"
 
     if (e.target && e.target.id === "caixa_select") {
-        const formulario = document.getElementById("formulario");
+        const conteudo_registro = document.querySelector(".conteudo.registro")
         const caixas = document.querySelectorAll("#caixa_select");
 
         // Converte NodeList em array e verifica se alguma está marcada
         const algumaMarcada = Array.from(caixas).some(item => item.checked);
 
         if (algumaMarcada) {
-            adicionarFormulario();
-            verificarValoresCampos()
+
+            adicionarElementosArea2()
 
         } else {
-            formulario.innerHTML = "";
+            conteudo_registro.innerHTML = "";
         }
     }
 });
