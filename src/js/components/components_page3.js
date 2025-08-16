@@ -101,23 +101,29 @@ export function adicionarElementos() {
 export function adicionarElementosArea2() {
 
     const conteudo_registro = document.querySelector(".conteudo.registro")
-
+    const div_cadastro = document.getElementById("gerar_cadastro")
 
     if (!document.getElementById("textArea")) {
 
         const textArea = document.createElement("textarea")
         textArea.id = "textArea"
-        textArea.textContent = "OBS:"
 
         conteudo_registro.appendChild(textArea)
-
-
     }
 
-    if (!document.getElementById("selecionar_cadastrado")) {
 
+    if (!document.getElementById("button_salvar_relatorio") && !document.getElementById("selecionar_cadastrado") && !div_cadastro) {
 
-        const lista = JSON.parse(localStorage.getItem("CadastradosPage5")) || [];
+        // create button
+
+        const div_cadastro = document.createElement("div")
+        div_cadastro.id = "gerar_cadastro"
+
+        const button = document.createElement("button")
+        button.id = "button_salvar_relatorio"
+        button.textContent = "Gerar Relatório"
+
+        // create select
 
         const select = document.createElement("select")
         select.id = "selecionar_cadastrado"
@@ -129,22 +135,13 @@ export function adicionarElementosArea2() {
 
         select.appendChild(option)
 
-        conteudo_registro.appendChild(select)
+        div_cadastro.appendChild(select)
+        div_cadastro.appendChild(button)
+
+        conteudo_registro.appendChild(div_cadastro)
 
 
     }
-
-    if (!document.getElementById("button_salvar_relatorio")) {
-
-        const butto_salvar = document.createElement("button")
-        butto_salvar.textContent = "Gerar Relatorio"
-        butto_salvar.id = "button_salvar_relatorio"
-
-        conteudo_registro.appendChild(butto_salvar)
-
-
-    }
-
 
 
 }

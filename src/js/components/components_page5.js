@@ -1,6 +1,3 @@
-
-
-
 export function adicionarFormulario() {
 
     const formulario = document.getElementById("formulario")

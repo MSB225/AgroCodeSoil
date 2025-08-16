@@ -5,17 +5,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AgroCodeSoil</title>
+    <link rel="stylesheet" href="./src/style/page5.css">
 </head>
 
 <body>
 
-    <form id="formulario">
+    <aside class="sidebar">
 
-        <!--Onde será colocado o forms-->
+        <nav>
 
-    </form>
+            <button id="btn-amostra">
+                <img src="./src/assets/icons/menu_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg" alt="expandir" />
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <aside class="sidebar lateral">
+
+        <header>
+
+            <h1>Amostras</h1>
+
+        </header>
+
+        <section class="sidebar lateral amostras">
+
+            <div id="div_amostras">
+
+                <header>
+                    <h5>Amostras Salvas</h5>
+                </header>
+
+                <ul class="list-group" id="ul_amostras">
 
 
+
+                </ul>
+
+            </div>
+
+            <div id="div_acoes">
+
+                <button class="btn btn-success" id="button_select">
+                    <img class="icone" src="/src/assets/icons/check_box_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+                </button>
+
+                <button class="btn btn-success" id="button_delete">
+                    <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
+                </button>
+
+            </div>
+
+        </section>
+
+    </aside>
+
+    <main class="conteudo">
+
+        <header>
+
+            <h1>AgroCodeSoil <span> <img src="./src/assets/icons/leaves.svg" alt="folha"></span> </h1>
+
+        </header>
+
+        <div class="conteudo dados">
+
+            <section class="conteudo campos">
+
+                <div class="conteudo formulario">
+
+                    <form id="formulario">
+
+                        <!--Onde será colocado o forms-->
+
+                    </form>
+
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <script type="module" src="./src/js/page5.js"></script>
 
 </body>
 
