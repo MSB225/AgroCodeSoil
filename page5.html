@@ -38,7 +38,7 @@
                     <h5>Amostras Salvas</h5>
                 </header>
 
-                <ul class="list-group" id="ul_amostras">
+                <ul id="ul_amostras">
 
 
 
@@ -78,12 +78,32 @@
 
                     <form id="formulario">
 
-                        <!--Onde será colocado o forms-->
+                        <label for="nome">Nome/Proprietário</label>
+                        <input type="text" id="nome" name="nome" placeholder="Ex.Nome" required>
+
+                        <label for="municipio">Município</label>
+                        <input type="text" id="municipio" name="municipio" placeholder="Ex.Cidade" required>
+
+                        <label for="localidade">Localidade</label>
+                        <input type="text" id="localidade" name="localidade" placeholder="Ex.Região" required>
+
+                        <label for="endereco">Endereço</label>
+                        <input type="text" id="endereco" name="endereco" placeholder="Ex.Rua" required>
+
+                        <label for="cep">CEP</label>
+                        <input type="text" id="cep" name="cep" placeholder="Ex.00000-000" required>
+
+                        <button id="button_enviar" type="submit">Enviar</button>
 
                     </form>
 
-
                 </div>
+
+            </section>
+
+            <section class="conteudo tabela">
+
+                <!--Onde será colocado a tabela-->
 
             </section>
 

@@ -282,6 +282,9 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
+
+    display: grid;
+    grid-column: 1fr 2fr;
 }
 
 .conteudo header {
@@ -310,12 +313,7 @@ body {
 
 }
 
-/* --------------------------------------Conteudo Dados-----------------------------*/
 
-.conteudo.dados {
-
-    height: 92vh;
-}
 
 /* --------------------------------------Conteudo Campos-----------------------------*/
 
@@ -331,15 +329,14 @@ body {
     gap: 1vh;
 
 }
+
 /*----------------------- Formulário --------------------- */
 
 
 .conteudo.formulario form {
 
     margin: 3vw;
-
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     grid-auto-flow: row;
     gap: 2vh;
 
@@ -381,20 +378,110 @@ body {
     height: 4vh;
     width: 15vw;
 
+    margin-top: 2vw;
 }
 
-.form-field-button {
 
+/* --------------------------------------Conteudo Tabela-----------------------------*/
+
+.conteudo.tabela {
+
+    background-color: #302f10;
+    height: 100%;
     display: flex;
-    align-items: end;
-
-
-}
-
-.form-field {
-
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    gap: 2vh;
+    align-items: flex-start;
+}
+
+.conteudo.tabela table {
+
+    border-collapse: collapse;
+    width: 90%;
+    height: auto;
+    margin: 5vw;
+    table-layout: fixed;
+}
+
+.conteudo.tabela thead {
+
+    background-color: #913f33;
+    color: whitesmoke;
+    font-weight: 500;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.conteudo.tabela tbody {
+
+    display: block;
+    max-height: 20vh;
+    overflow-y: auto;
+    background-color: antiquewhite;
+    color: black;
+    font-weight: 500;
+}
+
+.conteudo.tabela tr {
+
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.conteudo.tabela th,
+.conteudo.tabela td {
+
+    padding: 12px 16px;
+    text-align: center;
+    font-size: 1.2vw;
+}
+
+.conteudo.tabela img {
+
+    pointer-events: none;
+    width: 1.5vw;
+
+}
+
+#button_excluirlinha {
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #e25c4a;
+    color: whitesmoke;
+    padding: 0.3vw 0.6vw;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#button_salvarlinha {
+
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #198754;
+    color: whitesmoke;
+    padding: 0.3vw 0.6vw;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#button_salvarlinha:hover,
+#button_excluirlinha:hover {
+
+    transform: scale(1.1)
+}
+
+.sem-linha thead {
+
+    display: none;
+
 }
