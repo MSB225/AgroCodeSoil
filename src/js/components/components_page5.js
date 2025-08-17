@@ -1,15 +1,15 @@
 
-export function salvarFormulario(formulario) {
+export function salvarDadosFormulario(formulario) {
 
 
     // load data on localstorage
-    const lista = JSON.parse(localStorage.getItem("AmostraSalvasPage5")) || [];
+    const lista = JSON.parse(localStorage.getItem("AmostraTabelaPage5")) || [];
 
     // add in list
     lista.push(formulario);
 
     // save in localstorage
-    localStorage.setItem("AmostraSalvasPage5", JSON.stringify(lista));
+    localStorage.setItem("AmostraTabelaPage5", JSON.stringify(lista));
 
 }
 
@@ -40,6 +40,7 @@ export function adicionarTabela(formulario) {
             <th>Localidade</th>
             <th>Endereço</th>
             <th>Cep</th>
+            <th>Ações</th>
            
             
         `;
@@ -63,7 +64,7 @@ export function adicionarTabela(formulario) {
         <td>${formulario.Municipio}</td>
         <td>${formulario.Localidade}</td>
         <td>${formulario.Endereco}</td>
-        <td>${formulario.Localidade}</td>
+        <td>${formulario.Cep}</td>
         <td>
             <button id="button_excluirlinha" data-id="${formulario.id}">
                 <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
@@ -304,12 +305,12 @@ export function carregarAmostraSidebar() {
         // add li e append sidebar
 
         const li = document.createElement("li")
-        li.classList.add("list-group-item", "li_amostras")
+        li.classList.add("li_amostras")
 
         li.innerHTML = `
 
             <div class="item-linha">
-                <span class="texto-linha">Amostra: ${element.Nome}</span>
+                <span class="texto-linha">Usuário: ${element.Nome}</span>
                 <input class="caixa_input" data-id="${element.id}" type="checkbox">
             </div>
         `;

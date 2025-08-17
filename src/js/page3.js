@@ -1,16 +1,16 @@
-import { idCadastro, amostraCadastro, usuarioCadastro, camadaCadastro, array_amostra } from "./logics/logic_page3.js"
-import { adicionarElementosArea2,adicionarElementos, listarAmostras, salvarDadosAmostra, limparElementos, adicionarTabela, carregarTabela, atualizarTabela, removerTabelaLinha, mostrarAmostraSidebar, carregarAmostraSidebar, removerAmostraSidebar, atualizarAmostraSidebar, verificarValoresCampos } from "./components/components_page3.js"
+import { amostraCadastro, array_amostra } from "./logics/logic_page3.js"
+import { salvarDadosFormulario, adicionarElementosArea2, adicionarElementos, listarAmostras, salvarDadosAmostra, limparElementos, adicionarTabela, carregarTabela, atualizarTabela, removerTabelaLinha, mostrarAmostraSidebar, carregarAmostraSidebar, removerAmostraSidebar, atualizarAmostraSidebar, verificarValoresCampos } from "./components/components_page3.js"
 import { gerarPdf } from "./pdf.js";
 
 // salvar fields
 
 document.addEventListener("click", (event) => {
 
+    let cadastrados = JSON.parse(localStorage.getItem("AmostraSalvasPage5")) || [];
 
-    if (event.target && event.target.id === "button_enviar") {
+    if (event.target && event.target.id === "button_salvar_relatorio") {
 
-        usuarioCadastro()
-        salvarDadosFormulario(array_amostra)
+        salvarDadosFormulario(cadastrados)
 
     }
 
@@ -22,9 +22,7 @@ document.addEventListener("click", (event) => {
 
     if (event.target.id === "button_salvaramostra") {
 
-        idCadastro()
         amostraCadastro()
-        camadaCadastro()
         salvarDadosAmostra(array_amostra)
         adicionarTabela(array_amostra)
         limparElementos()

@@ -1,13 +1,14 @@
-import {salvarFormulario,adicionarTabela,carregarTabela,atualizarTabela,mostrarAmostraSidebar,carregarAmostraSidebar,atualizarAmostraSidebar} from "./components/components_page5.js"
-import {array_formulario} from "./logics/logic_page5.js"
+import {salvarDadosFormulario,adicionarTabela,carregarTabela,atualizarTabela,mostrarAmostraSidebar,carregarAmostraSidebar,atualizarAmostraSidebar,removerAmostraSidebar} from "./components/components_page5.js"
+import {salvarCamposFormulario,array_formulario} from "./logics/logic_page5.js"
 
 // salve forms
 
 document.addEventListener("click",(event) => {
 
     if (event.target && event.target.id === "button_enviar"){
-    
-        salvarFormulario(array_formulario)
+        
+        salvarCamposFormulario()
+        salvarDadosFormulario(array_formulario)
         adicionarTabela(array_formulario)
     
     }
@@ -67,3 +68,5 @@ document.addEventListener("click", (e) => {
     }
 
 })
+
+

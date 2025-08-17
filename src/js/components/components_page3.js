@@ -114,6 +114,9 @@ export function adicionarElementosArea2() {
 
     if (!document.getElementById("button_salvar_relatorio") && !document.getElementById("selecionar_cadastrado") && !div_cadastro) {
 
+        const cadastrados = JSON.parse(localStorage.getItem("AmostraSalvasPage5")) || [];
+
+
         // create button
 
         const div_cadastro = document.createElement("div")
@@ -123,23 +126,33 @@ export function adicionarElementosArea2() {
         button.id = "button_salvar_relatorio"
         button.textContent = "Gerar Relatório"
 
-        // create select
-
         const select = document.createElement("select")
         select.id = "selecionar_cadastrado"
 
-        const option = document.createElement("option")
-        option.textContent = "Selecione um Cadastro"
-        option.disabled = true
-        option.selected = true
+        const option_padrao = document.createElement("option")
+        option_padrao.textContent = "Selecione um Cadastro"
+        option_padrao.disabled = true
+        option_padrao.selected = true
 
-        select.appendChild(option)
+        select.appendChild(option_padrao)
 
-        div_cadastro.appendChild(select)
-        div_cadastro.appendChild(button)
+        // create select
 
-        conteudo_registro.appendChild(div_cadastro)
+        cadastrados.forEach(cadastros => {
 
+            const option = document.createElement("option")
+
+            option.value = cadastros.id
+            option.textContent = `Usuário: ${cadastros.Nome}`
+
+            select.appendChild(option)
+
+            div_cadastro.appendChild(select)
+            div_cadastro.appendChild(button)
+
+            conteudo_registro.appendChild(div_cadastro)
+
+        })
 
     }
 
@@ -178,6 +191,38 @@ export function salvarDadosAmostra(amostra) {
     localStorage.setItem("AmostraTabelaPage3", JSON.stringify(dadosAmostra));
 
 }
+
+export function salvarDadosFormulario(cadastrados) {
+
+    const amostra = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || []
+
+    const select = document.getElementById("selecionar_cadastrado")
+
+    cadastrados.forEach(cadastrado => {
+
+        if (select.value == cadastrado.id) {
+
+            const formulario = {
+
+                "Nome": cadastrado.Nome,
+                "Município": cadastrado.Municipio,
+                "Localidade": cadastrado.Localidade,
+                "Endereço": cadastrado.Endereco,
+                "Cep": cadastrado.Cep
+
+            }
+
+            amostra.push(formulario)
+
+            localStorage.setItem("AmostraSalvaPage3", JSON.stringify(amostra))
+
+        }
+
+    })
+
+
+}
+
 
 export function limparElementos() {
 
@@ -388,7 +433,7 @@ export function carregarAmostraSidebar() {
         }
 
         const li = document.createElement("li")
-        li.classList.add("list-group-item", "li_amostras")
+        li.classList.add("li_amostras")
 
         li.innerHTML = `
 

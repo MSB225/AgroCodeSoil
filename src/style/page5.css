@@ -282,9 +282,7 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     width: 100%;
-
-    display: grid;
-    grid-column: 1fr 2fr;
+    height: 100%;
 }
 
 .conteudo header {
@@ -313,6 +311,14 @@ body {
 
 }
 
+/*---------------------------------------Conteudo Dados ----------------------------*/
+
+.conteudo.dados {
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+
+}
 
 
 /* --------------------------------------Conteudo Campos-----------------------------*/
