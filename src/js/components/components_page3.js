@@ -214,7 +214,7 @@ export function salvarDadosFormulario(cadastrados) {
 
             amostra.push(formulario)
 
-            localStorage.setItem("AmostraSalvaPage3", JSON.stringify(amostra))
+            localStorage.setItem("AmostraSalvasPage3", JSON.stringify(amostra))
 
         }
 
