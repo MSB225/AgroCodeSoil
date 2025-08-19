@@ -375,7 +375,7 @@ export function mostrarAmostraSidebar(botao) {
     if (!idExistente) {
 
         const li = document.createElement("li")
-        li.classList.add("list-group-item", "li_amostras")
+        li.classList.add("li_amostras")
 
 
         li.innerHTML = `
@@ -460,7 +460,7 @@ export function carregarAmostraSidebar() {
         // add li e append sidebar
 
         const li = document.createElement("li")
-        li.classList.add("list-group-item", "li_amostras")
+        li.classList.add("li_amostras")
 
         li.innerHTML = `
 

@@ -6,11 +6,13 @@ import { gerarPdf } from "./pdf.js";
 
 document.addEventListener("click", (event) => {
 
-    let cadastrados = JSON.parse(localStorage.getItem("AmostraSalvasPage5")) || [];
 
     if (event.target && event.target.id === "button_salvar_relatorio") {
 
+        const cadastrados = JSON.parse(localStorage.getItem("AmostraSalvasPage5")) || [];
+
         salvarDadosFormulario(cadastrados)
+        mostrarAmostraSidebar()
 
     }
 

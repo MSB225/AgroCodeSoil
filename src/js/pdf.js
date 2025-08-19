@@ -32,7 +32,7 @@ export function gerarPdf(id) {
                 `Nome/Proprietário: ${amostra.Nome}`,
                 `Município: ${amostra.Municipio}`,
                 `Localidade: ${amostra.Localidade}`,
-                `Endereço: ${amostra.Endereço}`,
+                `Endereço: ${amostra.Endereco}`,
                 `Cep: ${amostra.Cep}`
 
             ]

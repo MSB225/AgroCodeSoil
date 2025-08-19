@@ -126,6 +126,8 @@ export function adicionarElementosArea2() {
         button.id = "button_salvar_relatorio"
         button.textContent = "Gerar Relatório"
 
+        // create select and option 
+
         const select = document.createElement("select")
         select.id = "selecionar_cadastrado"
 
@@ -194,9 +196,11 @@ export function salvarDadosAmostra(amostra) {
 
 export function salvarDadosFormulario(cadastrados) {
 
-    const amostra = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || []
+    console.log(cadastrados)
 
-    const select = document.getElementById("selecionar_cadastrado")
+    const amostra = JSON.parse(localStorage.getItem("AmostraSalvasPage3")) || [];
+
+    const select = document.querySelector("#selecionar_cadastrado")
 
     cadastrados.forEach(cadastrado => {
 
@@ -204,6 +208,7 @@ export function salvarDadosFormulario(cadastrados) {
 
             const formulario = {
 
+                "id": cadastrado.id,
                 "Nome": cadastrado.Nome,
                 "Município": cadastrado.Municipio,
                 "Localidade": cadastrado.Localidade,
@@ -213,13 +218,11 @@ export function salvarDadosFormulario(cadastrados) {
             }
 
             amostra.push(formulario)
-
             localStorage.setItem("AmostraSalvasPage3", JSON.stringify(amostra))
 
         }
 
     })
-
 
 }
 
@@ -382,7 +385,7 @@ export function removerTabelaLinha(botao) {
 
 //-----------------------------------------Sidebar---------------------------------------//
 
-export function mostrarAmostraSidebar(amostra) {
+export function mostrarAmostraSidebar() {
 
     const sidebar = document.querySelector("#div_amostras")
 
@@ -397,18 +400,21 @@ export function mostrarAmostraSidebar(amostra) {
     }
 
     const li = document.createElement("li")
-    li.classList.add("list-group-item", "li_amostras")
+    li.classList.add("li_amostras")
+
+    const nome = document.getElementById("selecionar_cadastrado").children[1].textContent
+    const id = document.getElementById("selecionar_cadastrado").dataset.id
 
 
     li.innerHTML = `
         
-            <div class="item-linha">
-                <span class="texto-linha" Rel.${amostra.Nome}</span>
-                <button class="abrir_pdf" data-id=${amostra.id} ><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
-                <input class="caixa_input_amostra" data-id=${amostra.id} type="checkbox">
-            </div>
+        <div class="item-linha">
+            <span class="texto-linha">Rel.${nome}</span>
+            <button class="abrir_pdf" data-id="${id}"><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
+            <input class="caixa_input_amostra" data-id="${id}" type="checkbox">
+        </div>
 
-        `;
+    `;
 
     ul.appendChild(li)
 
