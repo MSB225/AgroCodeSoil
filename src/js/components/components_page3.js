@@ -131,6 +131,7 @@ export function adicionarElementosArea2() {
         const select = document.createElement("select")
         select.id = "selecionar_cadastrado"
 
+
         const option_padrao = document.createElement("option")
         option_padrao.textContent = "Selecione um Cadastro"
         option_padrao.disabled = true
@@ -202,9 +203,37 @@ export function salvarDadosFormulario(cadastrados) {
 
     const select = document.querySelector("#selecionar_cadastrado")
 
+    // verificar se todos estão selecionados
+
+
     cadastrados.forEach(cadastrado => {
 
         if (select.value == cadastrado.id) {
+
+            const array_area = []
+
+            const inputs = document.querySelectorAll("#caixa_select")
+
+            inputs.forEach(item => {
+
+                if (item.checked) {
+
+                    const area = item.parentElement.parentElement.parentElement.parentElement.children[0].textContent
+                    const CalagemTotal = item.parentElement.parentElement.parentElement.parentElement.children[1].textContent
+                    const profundidade = item.parentElement.parentElement.parentElement.parentElement.children[2].textContent
+
+                    const dados = {
+
+                        "Area": area,
+                        "CalagemTotal": CalagemTotal,
+                        "Profundidade": profundidade
+                    }
+
+                    array_area.push(dados)
+
+                }
+
+            })
 
             const formulario = {
 
@@ -213,7 +242,8 @@ export function salvarDadosFormulario(cadastrados) {
                 "Município": cadastrado.Municipio,
                 "Localidade": cadastrado.Localidade,
                 "Endereço": cadastrado.Endereco,
-                "Cep": cadastrado.Cep
+                "Cep": cadastrado.Cep,
+                "Areas": array_area,
 
             }
 
@@ -312,7 +342,7 @@ export function adicionarTabela(amostra) {
         <td>
             <div id=div_acoes_tabela>
                 <div>
-                    <button id="button_excluirlinha" data-id="${amostra.id}">
+                    <button id="button_excluirlinha"  data-id="${amostra.id}">
                         <img src="./src/assets/icons/delete_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg">
                     </button> 
                 </div>
@@ -403,14 +433,14 @@ export function mostrarAmostraSidebar() {
     li.classList.add("li_amostras")
 
     const nome = document.getElementById("selecionar_cadastrado").children[1].textContent
-    const id = document.getElementById("selecionar_cadastrado").dataset.id
+    const id = document.getElementById("selecionar_cadastrado").value // arrumar isso! id não localiza
 
 
     li.innerHTML = `
         
         <div class="item-linha">
             <span class="texto-linha">Rel.${nome}</span>
-            <button class="abrir_pdf" data-id="${id}"><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
+            <button class="abrir_pdf" data-id=${id}><img src="/src/assets/icons/open_in_new_24dp_E3E3E3_FILL0_wght400_GRAD0_opsz24.svg"></button>
             <input class="caixa_input_amostra" data-id="${id}" type="checkbox">
         </div>
 

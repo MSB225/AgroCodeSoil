@@ -1,7 +1,6 @@
 
 export let array_amostra = {}
 
-
 export function amostraCadastro() {
 
     const resultadosSalvos = JSON.parse(localStorage.getItem("AmostraSalvasPage2")) || [];
@@ -12,7 +11,6 @@ export function amostraCadastro() {
 
         if (select.value == item.id) {
 
-            array_amostra["id"]=Math.random()
             array_amostra["Amostra"] = item.Amostra
             array_amostra["Processo"] = item.Processo
             array_amostra["Camada"] = select_camada.value
